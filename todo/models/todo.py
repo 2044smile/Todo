@@ -21,7 +21,7 @@ class Todo(BaseModel):
         verbose_name="투두 작성자",
         help_text="투두 작성자를 나타냅니다."
     )
-    due_date = models.DateTimeField(
+    due_date = models.DateField(
         verbose_name="투두 마감일",
         help_text="투두 마감일을 나타냅니다."
     )
