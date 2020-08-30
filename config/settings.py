@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # apps
     'todo',
+    'account',
 
     'rest_framework',
     'drf_yasg',
