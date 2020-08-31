@@ -1,6 +1,6 @@
 from django.db import models
 
-from .common import BaseModel
+from common.models import BaseModel
 
 
 class Todo(BaseModel):
