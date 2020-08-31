@@ -10,9 +10,11 @@
 
 ## Account Model
 
-- email
+- email(Email Authentication)
 - nickname(Default email address (nickname)@)
 - is_superuser
 - is_staff
-- is_active
+- is_active(ban user is_active=False)
 - date_joined
+
+TODO(Think): Avatar? Profile(point, activity log) Model?
