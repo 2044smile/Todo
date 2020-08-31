@@ -1,5 +1,10 @@
 # TodoList
 
+## Plan
+
+- when you're done with your todo The points accumulate.
+- Ranking System
+
 ## Todo Model
 
 - title
