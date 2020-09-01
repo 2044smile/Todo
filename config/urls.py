@@ -6,7 +6,7 @@ from todo.views import *
 from account.views import *
 
 
-router = DefaultRouter()  # viewset 은 router 를 사용하여 URL 을 관리할 수 있습니다.
+router = DefaultRouter()
 router.register(r'todo', TodoModelViewSet)
 router.register(r'account', AccountModelViewSet)
 
