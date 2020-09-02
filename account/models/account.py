@@ -13,7 +13,7 @@ class AccountManager(BaseUserManager):
         if not email :            
             raise ValueError('must have user email')        
         user = self.model(            
-            email = self.normalize_email(email),            
+            email=self.normalize_email(email),
         )        
         user.set_password(password)        
         user.save(using=self._db)        
@@ -29,6 +29,7 @@ class AccountManager(BaseUserManager):
         user.is_staff = True
         user.save(using=self._db)
         return user 
+
 
 class Account(BaseModel, AbstractBaseUser, PermissionsMixin):
 
