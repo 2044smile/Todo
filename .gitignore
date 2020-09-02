@@ -1,5 +1,6 @@
 .idea
 .db.sqlite3
+config/secret_settings.py
 
 secret.py
 
