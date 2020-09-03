@@ -35,6 +35,7 @@ class Todo(BaseModel):
         verbose_name = '투두 리스트'
         verbose_name_plural = '투두 리스트(들)'
         ordering = ['-created_at']
+        db_table = 'todo'
 
     def __str__(self):
         return f"Todo-{self.author}-{self.created_at}"

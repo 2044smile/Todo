@@ -66,6 +66,7 @@ class Account(BaseModel, AbstractBaseUser, PermissionsMixin):
         verbose_name = '유저'
         verbose_name_plural = '유저(들)'
         ordering = ['-date_joined']
+        db_table = 'account'
 
     def __str__(self):
         return self.email
