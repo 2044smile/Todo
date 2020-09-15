@@ -10,11 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os
+import os, datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -24,7 +23,6 @@ SECRET_KEY = 'o^%y!*!p++5!$w*dz-8i(h24db_y95l6peo4v8a3$=ktp6r-xg'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -36,14 +34,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # apps
-    'todo',
-    'account',
+    'django.contrib.sites',
+
+    'rest_auth',
+    'rest_auth.registration',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_yasg',
     'django_extensions',
     'corsheaders',
+
+    # apps
+    'todo',
+    'account',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +85,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -87,7 +94,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -107,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -121,17 +126,63 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# CORS
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8080'
+    "http://127.0.0.1:8080"
 ]
+CORS_ALLOW_METHODS = (
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+)
+CORS_ALLOW_HEADERS = (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'access-control-request-method',
+    'access-control-request-headers',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 
 # Custom User Model
 AUTH_USER_MODEL = 'account.Account'
+
+# allauth
+SITE_ID = 1
+
+# REST_FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (  # 인증방식을 설정
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (  # 다른 클래스의 사용자가 API 의 다른 부분에 액세스하는 것을 허용하거나 거부하는데 사용
+        'rest_framework.permissions.IsAuthenticated',  # 인증 된 사용자만 이용할 수 있도록 설정
+    )
+}
+
+# JWT
+JWT_AUTH = {
+    'JWT_VERIFY': True,  # Decode 시 토큰이 정상적이지 않으면 에러발생 True
+    'JWT_VERIFY_EXPIRATION': True,  # 만료시간(expire time) 설정
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(hours=1),  # TODO(2044smile): 개발 후 10분으로 조정 필
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',  # ex) JWT <token>
+}
+
+REST_USE_JWT = True
