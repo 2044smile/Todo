@@ -22,7 +22,7 @@ class AccountManager(BaseUserManager):
     def create_superuser(self, email, password, **extra_fields):
 
         user = self.create_user(            
-            email = self.normalize_email(email),            
+            email=self.normalize_email(email),
             password=password    
         )        
         user.is_superuser = True
@@ -37,7 +37,7 @@ class Account(BaseModel, AbstractBaseUser, PermissionsMixin):
         help_text='유저의 이메일을 나타냅니다.',
         unique=True
     )
-    nickname = models.CharField(
+    username = models.CharField(
         null=True,
         blank=True,
         verbose_name='닉네임',

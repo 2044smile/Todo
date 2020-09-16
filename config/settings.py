@@ -49,9 +49,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'corsheaders',
 
-    # apps
     'todo',
-    'account',
+    'user.apps.AccountConfig'
 ]
 
 MIDDLEWARE = [
@@ -159,7 +158,7 @@ CORS_ALLOW_HEADERS = (
 )
 
 # Custom User Model
-AUTH_USER_MODEL = 'account.Account'
+AUTH_USER_MODEL = 'user.Account'
 
 # allauth
 SITE_ID = 1
