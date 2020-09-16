@@ -36,21 +36,17 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
 
-    'rest_auth',
-    'rest_auth.registration',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
 
     'rest_framework',
-    'rest_framework.authtoken',
     'drf_yasg',
     'django_extensions',
     'corsheaders',
 
     'todo',
-    'user.apps.AccountConfig'
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -183,5 +179,3 @@ JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_AUTH_HEADER_PREFIX': 'JWT',  # ex) JWT <token>
 }
-
-REST_USE_JWT = True

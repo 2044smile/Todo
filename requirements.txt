@@ -9,5 +9,4 @@ requests==2.23.0
 djongo
 django-allauth
 djangorestframework-jwt
-django-rest-auth
 django-rest-framework
