@@ -8,11 +8,11 @@ Backend Django  </br>
 
 ## Todo Model
 
-- title
-- description
-- author(Account Foreign)
-- due_date
-- completed
+- title (CharField 64)
+- description (CharField 256)
+- author (Account Foreign and CharField 16)
+- due_date (DateField)
+- completed (BooleanField default False)
 
 ## Account Model
 
