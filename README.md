@@ -2,8 +2,9 @@
 
 ## Plan
 
-- when you're done with your todo The points accumulate.
-- Ranking System
+Frontend Vue.js </br>
+Backend Django  </br>
+할만 할 콘텐츠가 있을까?
 
 ## Todo Model
 
