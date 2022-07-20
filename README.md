@@ -26,7 +26,7 @@ Backend Django  </br>
 
 ## Account Model
 
-- email(Email Authentication) (python manage.py createsuperuser)
+- email(Email Authentication) ()
 - username(Default email address (nickname)@)
 - is_superuser
 - is_staff
